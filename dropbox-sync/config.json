@@ -8,12 +8,12 @@
   "boot": "auto",
   "map": ["backup"],
   "options": {
-    "OAUTH_ACCESS_TOKEN": "<YOUR_ACCESS_TOKEN>",
+    "oauth_access_token": "<YOUR_ACCESS_TOKEN>",
     "output": ""
   },
   "schema": {
     "oauth_access_token": "str",
-    "output": "str?"
+    "output": "str"
   },
   "image": "dwelch2101/dropbox-sync-{arch}"
 }
