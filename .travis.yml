@@ -3,10 +3,10 @@ services:
 - docker
 
 before_script:
-  - chmod +x ./travis/build.sh
+  - chmod +x $TRAVIS_BUILD_DIR/build.sh
 
 script:
-- ./build.sh
+- $TRAVIS_BUILD_DIR/build.sh
 
 after_success:
 - if [ ! -z ${TRAVIS_TAG} ]; then docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
