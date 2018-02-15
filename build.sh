@@ -16,4 +16,5 @@ else
             --from "homeassistant/{arch}-base"
             --author "Daniel Welch <dwelch2102@gmail.com>"
             --doc-url "${GITHUB_URL}"
+    echo "Build successful"
 fi

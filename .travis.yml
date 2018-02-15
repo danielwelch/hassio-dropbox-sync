@@ -1,13 +1,13 @@
 sudo: required
 services:
-  - docker
-
+- docker
 script:
-  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-  - ./build.sh
-
+- docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+- "./build.sh"
 after_success:
-  - if [ ! -z ${TRAVIS_TAG} ]; then
-    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
-    docker run -it --rm --privileged --name "${ADDON_NAME}" -v ~/.docker:/root/.docker -v "$(pwd)":/docker hassioaddons/build-env:latest --target "${ADDON_NAME}" --git --all --push --from "homeassistant/{arch}-base" --author "Daniel Welch <dwelch2102@gmail.com>" --doc-url "${GITHUB_URL}"
-    fi
+- if [ ! -z ${TRAVIS_TAG} ]; then docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+  docker run -it --rm --privileged --name "${ADDON_NAME}" -v ~/.docker:/root/.docker -v "$(pwd)":/docker hassioaddons/build-env:latest --target "${ADDON_NAME}" --git --all --push --from "homeassistant/{arch}-base" --author "Daniel Welch <dwelch2102@gmail.com>" --doc-url "${GITHUB_URL}"
+  fi
+env:
+  global:
+    secure: YYbON8erb/7UJZ6iFXXU1a2GMsYv8SBgYsrixxoGV955VFhlIuzpt8vxE4hXIYUFstAVDvHm32SXDoXi5UrJCh25S30ULvtJt7kJMjLG9rUyL4ZKMITL8Bc0qoRqOg2BJk+IDo7qESOBoU42Ge4C8jzFdXlOclracLgyziMsN1VYOuHhVJbTSd2iX4M0d7Gy7tupQzy81B6VpFwaVLwamLN65lHRgJMOeWy4o6gVZHCZmAAqXSiYw739t57N6yTDHEGFNpiPYcPzkihdOCM63OLY/hkKB699WQm1J0PjhEhyR2j4Njffzb4tMGT/jJ6U/bJcQgHjBx8qhWYzuTY6fjn7aWvBXOi+fm9EyIgMcneqhTktP/fCBrjVDdqAlA/HERgvbPrZ34ShupXhMXCkyY5Tn2OQzDLZUEPYiVj5BBg+xRL39WMcJFRtHFVXNihrAbuwGJyN6J2yGhOqfcgDis+tcMGYQeelkG8SgEEHCPUXZgteyF9EtZEX9pECDiomyMx5JfJRsokcxuGptHxw+rh7tWj8EGXC25F5Yn9pMm1rF3QD/jfn6psn86XYTI6f4BegmkIq7ezql8YmDIw28FiUtoNbLsjlrKeQkrnNmyP6atIDTN0J/rOw1yVzTCu7rDj/poNgq6hFjDnpVxlk53RfxLGM3cjNIePSMeRvib0=
