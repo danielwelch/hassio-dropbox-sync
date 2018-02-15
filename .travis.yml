@@ -2,7 +2,6 @@ sudo: required
 services:
 - docker
 script:
-- docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 - "./build.sh"
 after_success:
 - if [ ! -z ${TRAVIS_TAG} ]; then docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
