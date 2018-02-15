@@ -1,17 +1,15 @@
 sudo: required
 services:
-- docker
+  - docker
 
 before_script:
   - chmod +x $TRAVIS_BUILD_DIR/build.sh
 
 script:
-- $TRAVIS_BUILD_DIR/build.sh
+  - $TRAVIS_BUILD_DIR/build.sh
 
 after_success:
-- if [ ! -z ${TRAVIS_TAG} ]; then docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
-  docker run -it --rm --privileged --name "${ADDON_NAME}" -v ~/.docker:/root/.docker -v "$(pwd)":/docker hassioaddons/build-env:latest --target "${ADDON_NAME}" --git --all --push --from "homeassistant/{arch}-base" --author "Daniel Welch <dwelch2102@gmail.com>" --doc-url "${GITHUB_URL}"
-  fi
+  - $TRAVIS_BUILD_DIR/distribute.sh
 
 env:
   global:
