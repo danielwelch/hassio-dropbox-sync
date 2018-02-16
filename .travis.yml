@@ -1,9 +1,6 @@
 sudo: required
 services:
 - docker
-before_script:
-- chmod +x $TRAVIS_BUILD_DIR/build.sh
-- chmod +x $TRAVIS_BUILD_DIR/distribute.sh
 script:
 - $TRAVIS_BUILD_DIR/build.sh
 after_success:
