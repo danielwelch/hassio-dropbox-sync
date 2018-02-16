@@ -5,7 +5,7 @@
   "description": "Dropbox Sync",
   "url": "https://github.com/danielwelch/hassio-addons/tree/master/dropbox-sync",
   "startup": "before",
-  "boot": "auto",
+  "boot": "manual",
   "map": ["backup"],
   "options": {
     "oauth_access_token": "<YOUR_ACCESS_TOKEN>",
