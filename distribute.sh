@@ -10,8 +10,9 @@ else
     #     exit 0
     # fi
     echo "No tag found. Pushing to Docker with tag 'test'."
-    
 fi
+
+git status
 
 docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 docker run -it --rm --privileged --name "${ADDON_NAME}" \
