@@ -5,7 +5,8 @@
   "description": "Upload your Hass.io backups to Dropbox",
   "url": "https://github.com/danielwelch/hassio-dropbox-sync",
   "startup": "before",
-  "boot": "manual",
+  "stdin": true,
+  "boot": "auto",
   "map": ["backup"],
   "options": {
     "oauth_access_token": "<YOUR_ACCESS_TOKEN>",
