@@ -6,15 +6,18 @@
   "url": "https://github.com/danielwelch/hassio-dropbox-sync",
   "startup": "before",
   "stdin": true,
+  "hassio_api": true,
   "boot": "auto",
   "map": ["backup"],
   "options": {
     "oauth_access_token": "<YOUR_ACCESS_TOKEN>",
-    "output": ""
+    "output": "",
+    "keep_last": ""
   },
   "schema": {
     "oauth_access_token": "str",
-    "output": "str"
+    "output": "str",
+    "keep_last": "int(0,)"
   },
   "image": "dwelch2101/dropbox-sync-{arch}"
 }
