@@ -25,6 +25,8 @@ This triggers the `dropbox_uploader.sh` script with the provided access token. Y
 
 Dropbox Sync will only upload new snapshots to the specified path, and will skip snapshots already in the target Dropbox path.
 
+The `keep last` option allows the add-on to clean up the local backup directory, deleting the local copies of the snapshots after they have been uploaded to Dropbox. If `keep_last` is set to some integer `x`, only the latest `x` snapshots will be stored locally; all other (older) snapshots will be deleted from local storage. All snapshots are always uploaded to Dropbox, regardless of this option.
+
 *Note*: The hash `7be23ff5` that is prepended to the `dropbox_sync` add-on slug above is required. [See below](#repository-slugs-in-hassio) for an explanation. 
 ### Configuration
 
@@ -39,6 +41,7 @@ Once you have created the token, copy it into this add-on's configuration under 
 |---------|--------|-----------|
 |`oauth_access_token`|Yes|The "app" access token you generated above via the Dropbox UI.|
 |`output`|Yes|The target directory in your Dropbox to which you want to upload. If left empty, defaults to `/`, which represents the top level of directory of your Dropbox.|
+|`keep_last`|No|If set, the number of snapshots to keep locally. If there are more than this number of snapshots stored locally, the older snapshots will be deleted from local storage after being uploaded to Dropbox. If not set, no snapshots are deleted from local storage.|
 
 Example Configuration:
 ```json
