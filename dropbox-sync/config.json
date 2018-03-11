@@ -17,7 +17,7 @@
   "schema": {
     "oauth_access_token": "str",
     "output": "str",
-    "keep_last": "int(0,)"
+    "keep_last": "int(0,)?"
   },
   "image": "dwelch2101/dropbox-sync-{arch}"
 }
