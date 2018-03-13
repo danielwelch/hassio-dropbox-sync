@@ -11,8 +11,7 @@
   "map": ["backup"],
   "options": {
     "oauth_access_token": "<YOUR_ACCESS_TOKEN>",
-    "output": "",
-    "keep_last": ""
+    "output": ""
   },
   "schema": {
     "oauth_access_token": "str",
