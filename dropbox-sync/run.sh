@@ -3,10 +3,11 @@
 CONFIG_PATH=/data/options.json
 
 TOKEN=$(jq --raw-output ".oauth_access_token" $CONFIG_PATH)
-OUTPUT_DIR=$(jq --raw-output ".output" $CONFIG_PATH)
-KEEP_LAST=$(jq --raw-output ".keep_last" $CONFIG_PATH)
+OUTPUT_DIR=$(jq --raw-output ".output // empty" $CONFIG_PATH)
+KEEP_LAST=$(jq --raw-output ".keep_last // empty" $CONFIG_PATH)
+FILETYPES=$(jq --raw-output ".filetypes // empty" $CONFIG_PATH)
 
-if [ -z "$OUTPUT_DIR" ]; then
+if [[ -z "$OUTPUT_DIR" ]]; then
     OUTPUT_DIR="/"
 fi
 
@@ -26,9 +27,13 @@ while read -r msg; do
     if [[ $cmd = "upload" ]]; then
         echo "[Info] Uploading all .tar files in /backup (skipping those already in Dropbox)"
         ./dropbox_uploader.sh -s -f /etc/uploader.conf upload /backup/*.tar "$OUTPUT_DIR"
-        if [ ! -z "$KEEP_LAST" ]; then
+        if [[ "$KEEP_LAST" ]]; then
             echo "[Info] keep_last option is set, cleaning up files..."
             python3 /keep_last.py "$KEEP_LAST"
+        fi
+        if [[ "$FILETYPES" ]]; then
+            echo "[Info] filetypes option is set, scanning share directory for files with extensions ${FILETYPES}"
+            find /share -regextype posix-extended -regex "^.*\.(${FILETYPES})" -exec ./dropbox_uploader.sh -s -f /etc/uploader.conf upload {} "$OUTPUT_DIR" \;
         fi
     else
         # received undefined command
