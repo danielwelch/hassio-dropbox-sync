@@ -44,7 +44,7 @@ Once you have created the token, copy it into this add-on's configuration under 
 |`oauth_access_token`|Yes|The "app" access token you generated above via the Dropbox UI.|
 |`output`|Yes|The target directory in your Dropbox to which you want to upload. If left empty, defaults to `/`, which represents the top level of directory of your Dropbox.|
 |`keep_last`|No|If set, the number of snapshots to keep locally. If there are more than this number of snapshots stored locally, the older snapshots will be deleted from local storage after being uploaded to Dropbox. If not set, no snapshots are deleted from local storage.|
-|`filetypes`|No|File extensions of files to upload from `/share` directory, seperated by `|` (ex: `"jpg|png" or "png"`).|
+|`filetypes`|No|File extensions of files to upload from `/share` directory, seperated by <code>&#124;</code> (ex: `"jpg|png" or "png"`).|
 
 Example Configuration:
 ```json
