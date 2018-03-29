@@ -14,7 +14,7 @@ fi
 
 git status
 
-docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+echo "$DOCKER_PASSWORD" | docker login -u ${DOCKER_USERNAME} --password-stdin
 docker run -it --rm --privileged --name "${ADDON_NAME}" \
     -v ~/.docker:/root/.docker \
     -v "$(pwd)":/docker \
