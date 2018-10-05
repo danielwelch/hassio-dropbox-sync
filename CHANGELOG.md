@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [1.3.0](https://github.com/danielwelch/hassio-dropbox-sync/releases/tag/v1.1.2) - 2018-03-27
+### Changed
+- Updated for new role-based permissions in hass.io API calls.
 ## [1.2.0](https://github.com/danielwelch/hassio-dropbox-sync/releases/tag/v1.1.2) - 2018-03-27
 ### Changed
 - Added `filetypes` option. Set this option to string of file extensions seperated by `|` to upload files with matching extensions to dropbox from the hassio `/share` folder.
