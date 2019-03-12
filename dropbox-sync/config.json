@@ -18,13 +18,21 @@
   "map": ["backup", "share"],
   "options": {
     "oauth_access_token": "<YOUR_ACCESS_TOKEN>",
-    "output": ""
+    "output": "",
+    "mqtt_host": "hassio.local",
+    "mqtt_user": "",
+    "mqtt_password": "",
+    "mqtt_topic": "backup/dropbox"
   },
   "schema": {
     "oauth_access_token": "str",
     "output": "str",
     "keep_last": "int(0,)?",
-    "filetypes": "str?"
+    "filetypes": "str?",
+    "mqtt_host": "str",
+    "mqtt_user": "str",
+    "mqtt_password": "str",
+    "mqtt_topic": "str"
   },
   "image": "dwelch2101/dropbox-sync-{arch}"
 }
