@@ -43,7 +43,7 @@ while read -r msg; do
         fi
         if [[ "$FOLDER_BACKUP" ]]; then
             echo "[Info] folder_backup option is set, uploading ${FOLDER_BACKUP}"
-            ./dropbox_uploader.sh -s -f /etc/uploader.conf upload /${backup_dir} "${OUTPUT_DIR}/folder_backup/${backup_dir}"
+            ./dropbox_uploader.sh -s -f /etc/uploader.conf upload /${FOLDER_BACKUP} "${OUTPUT_DIR}/folder_backup/${FOLDER_BACKUP}"
         fi
     else
         # received undefined command
