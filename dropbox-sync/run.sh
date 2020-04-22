@@ -30,8 +30,8 @@ while read -r msg; do
         echo "[Info] Uploading all .tar files in /backup (skipping those already in Dropbox)"
         ./dropbox_uploader.sh -s -f /etc/uploader.conf upload /backup/*.tar "$OUTPUT_DIR"
         if [[ $cmd = "all" ]]; then
-            echo "[Info] Uploading all directories in Hassio root (overwriting existing files)"
-            ./dropbox_uploader.sh -x -f /etc/uploader.conf upload /root/* "${OUTPUT_DIR}/hassio_backup"
+            echo "[Info] Uploading all directories in Hassio root (skipping existing files)"
+            ./dropbox_uploader.sh -s -x -f /etc/uploader.conf upload /root/* "${OUTPUT_DIR}/hassio_backup"
         fi
         if [[ "$KEEP_LAST" ]]; then
             echo "[Info] keep_last option is set, cleaning up files..."
