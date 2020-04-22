@@ -15,7 +15,7 @@
   "hassio_api": true,
   "hassio_role": "manager",
   "boot": "auto",
-  "map": ["backup", "share"],
+  "map": ["backup", "share", "addons", "ssl", "config"],
   "options": {
     "oauth_access_token": "<YOUR_ACCESS_TOKEN>",
     "output": ""
@@ -25,6 +25,7 @@
     "output": "str",
     "keep_last": "int(0,)?",
     "filetypes": "str?"
+    "folder_backup": "str?"
   },
   "image": "dwelch2101/dropbox-sync-{arch}"
 }
