@@ -24,7 +24,7 @@
     "oauth_access_token": "str",
     "output": "str",
     "keep_last": "int(0,)?",
-    "filetypes": "str?"
+    "filetypes": "str?",
     "folder_backup": "str?"
   },
   "image": "dwelch2101/dropbox-sync-{arch}"
