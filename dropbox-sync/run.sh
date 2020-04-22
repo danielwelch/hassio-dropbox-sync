@@ -28,10 +28,10 @@ while read -r msg; do
     echo "[Info] Received message with command ${cmd}"
     if [[ $cmd = "upload" ]]; then
         echo "[Info] Uploading all .tar files in /backup (skipping those already in Dropbox)"
-        ./dropbox_uploader.sh -f /etc/uploader.conf upload /backup/*.tar "$OUTPUT_DIR"
+        ./dropbox_uploader.sh -s -f /etc/uploader.conf upload /backup/*.tar "$OUTPUT_DIR"
         if [[ $cmd = "all" ]]; then
             echo "[Info] Uploading all directories in Hassio root"
-            ./dropbox_uploader.sh -s -f /etc/uploader.conf upload / "${OUTPUT_DIR}/hassio_backup"
+            ./dropbox_uploader.sh -f /etc/uploader.conf upload / "${OUTPUT_DIR}/hassio_backup"
         fi
         if [[ "$KEEP_LAST" ]]; then
             echo "[Info] keep_last option is set, cleaning up files..."
