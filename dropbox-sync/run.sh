@@ -29,10 +29,6 @@ while read -r msg; do
     if [[ $cmd = "upload" ]]; then
         echo "[Info] Uploading all .tar files in /backup (skipping those already in Dropbox)"
         ./dropbox_uploader.sh -s -f /etc/uploader.conf upload /backup/*.tar "$OUTPUT_DIR"
-        if [[ $cmd = "all" ]]; then
-            echo "[Info] Uploading all directories in Hassio root (skipping existing files)"
-            ./dropbox_uploader.sh -s -x -f /etc/uploader.conf upload /root/* "${OUTPUT_DIR}/hassio_backup"
-        fi
         if [[ "$KEEP_LAST" ]]; then
             echo "[Info] keep_last option is set, cleaning up files..."
             python3 /keep_last.py "$KEEP_LAST"
@@ -44,6 +40,10 @@ while read -r msg; do
         if [[ "$FOLDER_BACKUP" ]]; then
             echo "[Info] folder_backup option is set, uploading ${FOLDER_BACKUP}"
             ./dropbox_uploader.sh -f /etc/uploader.conf upload /${FOLDER_BACKUP} "${OUTPUT_DIR}/folder_backup"
+        fi
+    elif [[ $cmd = "all" ]]; then
+            echo "[Info] Uploading all directories in Hassio root (skipping existing files)"
+            ./dropbox_uploader.sh -s -x -f /etc/uploader.conf upload /root/* "${OUTPUT_DIR}/hassio_backup"
         fi
     else
         # received undefined command
