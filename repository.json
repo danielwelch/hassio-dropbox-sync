@@ -1,5 +1,5 @@
 {
   "name": "Hass.io Add-on: Dropbox Sync",
-  "url": "https://github.com/elmerenges/hassio-dropbox-sync",
-  "maintainer": "István Pődör <elmerenges@gmail.com>"
+  "url": "https://github.com/danielwelch/hassio-dropbox-sync",
+  "maintainer": "Daniel Welch <dwelch2102@gmail.com>"
 }
