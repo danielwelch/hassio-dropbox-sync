@@ -17,10 +17,14 @@
   "boot": "auto",
   "map": ["backup", "share"],
   "options": {
+    "oauth_app_key": "<YOUR_APP_KEY>",
+    "oauth_app_secret": "<YOUR_APP_SECRET>",
     "oauth_access_token": "<YOUR_ACCESS_TOKEN>",
     "output": ""
   },
   "schema": {
+    "oauth_app_key": "str",
+    "oauth_app_secret": "str",
     "oauth_access_token": "str",
     "output": "str",
     "keep_last": "int(0,)?",
