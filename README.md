@@ -22,7 +22,6 @@ After the add-on is configured and started, trigger an upload by calling the `ha
 ```
 
 This triggers the `dropbox_uploader.sh` script with the provided access token. You can use Home Assistant automations or scripts to run uploads at certain time intervals, under certain conditions, etc.
-
 Dropbox Sync will only upload new snapshots to the specified path, and will skip snapshots already in the target Dropbox path.
 
 The `keep last` option allows the add-on to clean up the local backup directory, deleting the local copies of the snapshots after they have been uploaded to Dropbox. If `keep_last` is set to some integer `x`, only the latest `x` snapshots will be stored locally; all other (older) snapshots will be deleted from local storage. All snapshots are always uploaded to Dropbox, regardless of this option.
@@ -33,14 +32,30 @@ The `filetypes` option allows the add-on to upload arbitrary filetypes from the 
 ### Configuration
 
 To access your personal Dropobox, this add-on (and the `Dropbox-Uploader` script more generally) requires an access token. Follow these steps to create an Access Token:
-1. Go to `https://www.dropbox.com/developers/apps`
-2. Click the "Create App" button
-3. Follow the prompts to set permissions and choose a unique name for your "app" token.
+ 1) Open the following URL in your Browser, and log in using your account: https://www.dropbox.com/developers/apps
+ 2) Click on "Create App", then select "Choose an API: Scoped Access"
+ 3) "Choose the type of access you need: App folder"
+ 4) Enter the "App Name" that you prefer (e.g. MyUploader3173010022202), must be uniqe
 
-Once you have created the token, copy it into this add-on's configuration under the `oauth_access_token` label. 
+ Now, click on the "Create App" button.
+
+ 5) Now the new configuration is opened, switch to tab "permissions" and check "files.metadata.read/write" and "files.content.read/write"
+ Now, click on the "Submit" button.
+
+ 6) Now to tab "settings" and provide the following information:
+ App key: <YOUR_APP_KEY>
+ App secret: <YOUR_APP_SECRET>
+
+Once you have created the application, visit the following URL, replacing <YOUR_APP_KEY> below.
+
+`https://www.dropbox.com/oauth2/authorize?client_id=<YOUR_APP_KEY>&token_access_type=offline&response_type=code`
+
+Once you have authorized the application, copy it into this add-on's configuration under the `oauth_access_token` label. 
 
 |Parameter|Required|Description|
 |---------|--------|-----------|
+|`oauth_app_key`|Yes|The "app" key you generated.|
+|`oauth_app_secret`|Yes|The "app" secret you generated.|
 |`oauth_access_token`|Yes|The "app" access token you generated above via the Dropbox UI.|
 |`output`|Yes|The target directory in your Dropbox to which you want to upload. If left empty, defaults to `/`, which represents the top level of directory of your Dropbox.|
 |`keep_last`|No|If set, the number of snapshots to keep locally. If there are more than this number of snapshots stored locally, the older snapshots will be deleted from local storage after being uploaded to Dropbox. If not set, no snapshots are deleted from local storage.|
@@ -49,6 +64,8 @@ Once you have created the token, copy it into this add-on's configuration under 
 Example Configuration:
 ```json
 {
+  "oauth_app_key": "<YOUR_APP_KEY>",
+  "oauth_app_secret": "<YOUR_APP_SECRET>",
   "oauth_access_token": "<YOUR_TOKEN>",
   "output": "/hasssio-backups/"
 }
