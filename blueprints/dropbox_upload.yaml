@@ -1,0 +1,23 @@
+# see https://community.home-assistant.io/t/hass-io-add-on-upload-hassio-snapshots-to-dropbox/43622/233
+
+blueprint:
+  name: Dropbox Snapshot Upload
+  description: Upload snapshot backups to Dropbox every day
+  domain: automation
+  input:
+    upload_time:
+      name: Upload time
+      description: The snapshots will be uploaded at this time (every day)
+      selector:
+        time:
+
+trigger:
+  platform: time
+  at: !input upload_time
+
+action:
+  service: hassio.addon_stdin
+  data_template:
+    addon: "7be23ff5_dropbox_sync"
+    input:
+      command: "upload"
