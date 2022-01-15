@@ -4,6 +4,7 @@ import os
 import requests
 from dateutil.parser import parse
 import pytz
+import os
 
 BASE_URL = "http://hassio/"
 HEADERS = {"X-HASSIO-KEY": os.environ.get("HASSIO_TOKEN")}
@@ -30,6 +31,7 @@ def main(number_to_keep):
         res = requests.post(
             BASE_URL + "snapshots/" + snapshot["slug"] + "/remove",
             headers=HEADERS)
+        os.system("./dropbox_uploader.sh -f /etc/uploader.conf delete /{}".format(snapshot["slug"]))
         if res.ok:
             print("[Info] Deleted snapshot {}".format(snapshot["slug"]))
             continue
