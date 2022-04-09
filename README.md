@@ -1,4 +1,4 @@
-# Hass.io Add-on: Dropbox Sync
+# Hass.io Add-on: Dropbox Sync (Fixed)
 Back up your Hass.io snapshots to Dropbox.
 
 ### About
@@ -7,7 +7,7 @@ This add-on allows you to upload your Hass.io snapshots to your Dropbox, keeping
 This add-on uses the [Dropbox-Uploader](https://github.com/andreafabrizi/Dropbox-Uploader) bash script to upload files to Dropbox. It requires that you generate an access token via the Dropbox Web UI, which must be added to this add-on's configuration via the Hass.io UI (see below for further details).
 
 ### Installation
-1. Add the add-ons repository to your Hass.io instance: `https://github.com/danielwelch/hassio-addons`
+1. Add the add-ons repository to your Hass.io instance: `https://github.com/jaseonline/hassio-addons`
 2. Install the Dropbox Sync add-on
 3. Configure the add-on with your Dropbox OAuth Token and desired output directory (see configuration below)
 
@@ -64,7 +64,7 @@ Hass.io add-on service calls such as `start`, `stop`, and `stdin` require an add
 ```python
 import hashlib
 
-key = "https://github.com/danielwelch/hassio-addons"
+key = "https://github.com/jaseonline/hassio-addons"
 my_repo_id = hashlib.sha1(key.lower().encode()).hexdigest()[:8]
 ```
 
