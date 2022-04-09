@@ -64,7 +64,7 @@ Hass.io add-on service calls such as `start`, `stop`, and `stdin` require an add
 ```python
 import hashlib
 
-key = "https://github.com/jaseonline/hassio-addons"
+key = "https://github.com/danielwelch/hassio-addons"
 my_repo_id = hashlib.sha1(key.lower().encode()).hexdigest()[:8]
 ```
 
