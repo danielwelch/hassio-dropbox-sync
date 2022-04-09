@@ -1,6 +1,6 @@
 {
   "name": "Dropbox Sync (Fixed)",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "slug": "dropbox_sync",
   "description": "Upload your Hass.io backups to Dropbox",
   "url": "https://github.com/jaseonline/hassio-dropbox-sync",
