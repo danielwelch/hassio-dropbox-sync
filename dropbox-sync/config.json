@@ -1,10 +1,10 @@
 {
-  "name": "Dropbox Sync",
+  "name": "Dropbox Sync (Fixed)",
   "version": "dev",
   "slug": "dropbox_sync",
   "description": "Upload your Hass.io backups to Dropbox",
-  "url": "https://github.com/danielwelch/hassio-dropbox-sync",
-  "startup": "before",
+  "url": "https://github.com/jaseonline/hassio-dropbox-sync",
+  "startup": "application",
   "arch": [
     "aarch64",
     "amd64",
@@ -26,5 +26,5 @@
     "keep_last": "int(0,)?",
     "filetypes": "str?"
   },
-  "image": "dwelch2101/dropbox-sync-{arch}"
+  "image": "jaseonline/dropbox-sync-{arch}"
 }
