@@ -26,5 +26,5 @@
     "keep_last": "int(0,)?",
     "filetypes": "str?"
   },
-  "image": "jaseonline/addon-dropbox-sync/icon.png"
+  "image": "jaseonline/addon-dropbox-sync/dropbox-sync/icon.png"
 }
