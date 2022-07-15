@@ -7,7 +7,7 @@ This add-on allows you to upload your Home Assistant snapshots to your Dropbox, 
 This add-on uses the [Dropbox-Uploader](https://github.com/andreafabrizi/Dropbox-Uploader) bash script to upload files to Dropbox. It requires that you generate an access token via the Dropbox Web UI, which must be added to this add-on's configuration via the Home Assistant UI (see below for further details).
 
 ### Installation
-1. Add the add-ons repository to your Home Assistant instance: `https://github.com/jaseonline/dropbox-sync`
+1. Add the add-ons repository to your Home Assistant instance: `https://github.com/jaseonline/addon-dropbox-sync`
 2. Install the Dropbox Sync add-on
 3. Configure the add-on with your Dropbox OAuth Token and desired output directory (see configuration below)
 
@@ -64,7 +64,7 @@ Home Assistant add-on service calls such as `start`, `stop`, and `stdin` require
 ```python
 import hashlib
 
-key = "https://github.com/jaseonline/dropbox-sync"
+key = "https://github.com/jaseonline/addon-dropbox-sync"
 my_repo_id = hashlib.sha1(key.lower().encode()).hexdigest()[:8]
 ```
 
