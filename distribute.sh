@@ -24,5 +24,5 @@ docker run -it --rm --privileged --name "${ADDON_NAME}" \
     --all \
     --push \
     --from "homeassistant/{arch}-base" \
-    --author "Daniel Welch <dwelch2102@gmail.com>" \
+    --author "Jason Titter <jason.titter@matilda.network>" \
     --doc-url "${GITHUB_URL}"
