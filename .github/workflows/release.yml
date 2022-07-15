@@ -1,0 +1,25 @@
+---
+name: Dropbox Sync Release
+# yamllint disable-line rule:truthy
+on:
+  schedule:
+  - cron: "0 2 * * 1-5"
+  workflow_dispatch:
+jobs:
+  dropbox-sync-release:
+    name: ℹ️ Check Dropbox Sync Release
+    runs-on: ubuntu-latest
+    outputs:
+      update_available: ${{ steps.check_version.outputs.update_available }}
+      latest_version: ${{ steps.check_version.outputs.latest_version }}
+      target: ${{ steps.information.outputs.target }}
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v3
+      - name: 🚀 Check installed and latest version
+        id: check_version
+        run: |
+          json=$(jq '.version |= "${{ needs.dropbox-sync-release.outputs.latest_version }}"' ./${{ needs.dropbox-sync-release.outputs.target }}/dropbox-sync_version.json)
+          echo "$json" > ./${{ needs.dropbox-sync-release.outputs.target }}/dropbox-syncdropbox-sync_version.json
+      - name: 🚀 Commit & Create Pull Request
+        uses: actions/create-pull-request@v4
