@@ -1,6 +1,6 @@
 {
   "name": "Dropbox Sync",
-  "version": "dev",
+  "version": "2.0",
   "slug": "dropbox_sync",
   "description": "Upload your Home Assistant backups to Dropbox",
   "url": "https://github.com/jaseonline/addon-dropbox-sync/",
