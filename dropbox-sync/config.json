@@ -1,9 +1,9 @@
 {
   "name": "Dropbox Sync",
-  "version": "2.0",
+  "version": "dev",
   "slug": "dropbox_sync",
-  "description": "Upload your Hass.io backups to Dropbox",
-  "url": "https://github.com/jaseonline/hassio-dropbox-sync",
+  "description": "Upload your Home Assistant backups to Dropbox",
+  "url": "https://github.com/jaseonline/addon-dropbox-sync",
   "startup": "application",
   "arch": [
     "aarch64",
@@ -26,5 +26,5 @@
     "keep_last": "int(0,)?",
     "filetypes": "str?"
   },
-  "image": "jaseonline/dropbox-sync-{arch}"
+  "image": "jaseonline/addon-dropbox-sync/icon.png"
 }
