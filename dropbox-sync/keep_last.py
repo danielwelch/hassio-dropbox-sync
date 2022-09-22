@@ -11,10 +11,10 @@ HEADERS = {"X-HASSIO-KEY": os.environ.get("HASSIO_TOKEN")}
 
 def main(number_to_keep):
 
-    snapshot_info = requests.get(BASE_URL + "snapshots", headers=HEADERS)
+    snapshot_info = requests.get(BASE_URL + "backups", headers=HEADERS)
     snapshot_info.raise_for_status()
 
-    snapshots = snapshot_info.json()["data"]["snapshots"]
+    snapshots = snapshot_info.json()["data"]["backups"]
     for snapshot in snapshots:
         d = parse(snapshot["date"])
         if d.tzinfo is None or d.tzinfo.utcoffset(d) is None:
@@ -27,8 +27,8 @@ def main(number_to_keep):
 
     for snapshot in stale_snapshots:
         # call hassio API deletion
-        res = requests.post(
-            BASE_URL + "snapshots/" + snapshot["slug"] + "/remove",
+        res = requests.delete(
+            BASE_URL + "backups/" + snapshot["slug"],
             headers=HEADERS)
         if res.ok:
             print("[Info] Deleted snapshot {}".format(snapshot["slug"]))
